@@ -1,0 +1,49 @@
+{
+  "name": "fullstack-source-base",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Source base fullstack (Express + React) tai su dung cho nhieu du an",
+  "engines": {
+    "node": ">=20.11.0",
+    "npm": ">=10.0.0"
+  },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"BE,FE\" -c \"blue,magenta\" \"npm:dev:be\" \"npm:dev:fe\"",
+    "dev:be": "npm run dev --workspace backend",
+    "dev:fe": "npm run dev --workspace frontend",
+    "build": "npm run build --workspace frontend",
+    "start": "npm run start --workspace backend",
+    "test": "npm run test --workspaces --if-present",
+    "test:be": "npm run test --workspace backend",
+    "test:fe": "npm run test --workspace frontend",
+    "test:cov": "npm run test:cov --workspaces --if-present",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "echo \"(JS thuan - khong co buoc typecheck)\"",
+    "check": "npm run format:check && npm run lint && npm run test",
+    "seed": "npm run seed --workspace backend",
+    "env:check": "node scripts/check-env.js",
+    "env:sync": "node scripts/sync-env.js",
+    "clean": "rimraf node_modules backend/node_modules frontend/node_modules frontend/dist coverage",
+    "kill:ports": "node scripts/kill-ports.js",
+    "prepare": "node -e \"process.exit(0)\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1"
+  }
+}

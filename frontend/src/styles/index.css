@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/**
+ * Tailwind v4 cau hinh bang CSS (khong con tailwind.config.js).
+ * Khai bao bien thiet ke tai day; chung tro thanh lop tien ich tuong ung.
+ */
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/** Chi hien vien focus khi dieu huong bang ban phim (tot cho tro nang). */
+:focus-visible {
+  outline-offset: 2px;
+}
